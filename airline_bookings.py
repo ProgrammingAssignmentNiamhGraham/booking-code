@@ -117,10 +117,10 @@ def assign_seating(booking_size, passenger_name, rows, num_seats_per_row):
 
     if booking_size <= num_seats_per_row:
         passengers_separated = assign_seats_where_booking_size_less_than_or_equal_to_row_size(booking_size, rows, num_seats_per_row, passenger_name)
+        return passengers_separated
     else:
-        passengers_separated = assign_seats_where_booking_size_exceeds_row_size(booking_size, rows, num_seats_per_row, passenger_name)
-
-    return passengers_separated
+        assign_seats_where_booking_size_exceeds_row_size(booking_size, rows, num_seats_per_row, passenger_name)
+        return booking_size
 
 
 def search_and_assign_most_suitable_seats(rows, booking_size, passenger_name):
@@ -150,9 +150,9 @@ def assign_seats_where_booking_size_less_than_or_equal_to_row_size(booking_size,
         return 0
 
     # booking could not be placed all together in one row
-    passengers_separated = split_booking_across_rows(booking_size, rows, num_seats_per_row, passenger_name)
+    split_booking_across_rows(booking_size, rows, num_seats_per_row, passenger_name)
 
-    return passengers_separated
+    return booking_size
 
 
 def get_seat_availability_twos(rows):
@@ -187,10 +187,9 @@ def get_seat_availability_row_size(rows, num_seats_in_row):
 def split_booking_across_rows(booking_size, rows, num_seats_per_row, passenger_name):
 
     booking_successful = split_booking_between_twos_and_threes(booking_size, rows, num_seats_per_row, passenger_name)
-    passengers_separated = 0
 
     if booking_successful:
-        return passengers_separated
+        return
 
     seats_left_to_fill = booking_size
     subgroup_size = max(booking_size -2, 2) # booking_size = 2 --> subgroup = 2; booking_size == 3 --> subgroup = 2; booking_size > = 4 --> subgroup >= 2
@@ -200,20 +199,16 @@ def split_booking_across_rows(booking_size, rows, num_seats_per_row, passenger_n
 
         if booking_for_subgroup_accomodated == True:
 
-            if subgroup_size == 1:
-                passengers_separated = passengers_separated + 1
 
             seats_left_to_fill = seats_left_to_fill - subgroup_size
 
             if seats_left_to_fill == 0:
-                return passengers_separated
+                return
 
             subgroup_size = seats_left_to_fill
 
         else:
             subgroup_size = subgroup_size - 1
-
-    return passengers_separated
 
 
 def  split_booking_between_twos_and_threes(booking_size, rows, num_seats_per_row, passenger_name):
@@ -285,11 +280,9 @@ def assign_seats_where_booking_size_exceeds_row_size(booking_size, rows, num_sea
     remainder_to_seat = split_booking_into_row_size_groups(booking_size, rows, num_seats_per_row, passenger_name)
 
     if remainder_to_seat == 0:
-        return 0
+        return
 
-    passengers_separated = split_booking_across_rows(remainder_to_seat, rows, num_seats_per_row, passenger_name)
-
-    return passengers_separated
+    split_booking_across_rows(remainder_to_seat, rows, num_seats_per_row, passenger_name)
 
 
 
@@ -365,5 +358,5 @@ if __name__ == "__main__":
     write_passenger_stats_to_db(passengers_refused, passengers_separated)
 
 
-#print(bookings)
+print("End")
 
