@@ -53,7 +53,7 @@ At a high level, the (Python) code provided here has method(s) relating to the f
   
 Once these are declared, the code performs the following actions sequentially:-
 
-	•	Reads the filenames provided for both the .db file and .csv file (both of which are saved in the directory of 	interest) through the command line, e.g. python seat_assign_1620xxxx_1620yyyy.py "airline_seating.db" "bookings.csv"
+	•	Reads the filenames provided for both the .db file and .csv file (both of which are saved in the directory of interest) through the command line, e.g. python seat_assign_1620xxxx_1620yyyy.py "airline_seating.db" "bookings.csv"
 		
 	•	Opens a connection with the database
 
