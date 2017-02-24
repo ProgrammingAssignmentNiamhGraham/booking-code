@@ -19,10 +19,11 @@ On the provision of seat allocation, the following order of priority is maintain
   
 Two metrics are initialised & updated in the database for each booking considered:-
 
-  	•	passengers_refused – not enough free seats available for the booking, so the count of seats requested is added
+  	•	passengers_refused – not enough free seats available for the booking, so the count of seats 
+	requested is added
 	
-  	•	passengers_separated – not enough free seats to sit the booking alongside one another, so the count of seats requested
-	is added
+  	•	passengers_separated – not enough free seats to sit the booking alongside one another, so 
+	the count of seats requested is added
     
 #Assumptions
 
