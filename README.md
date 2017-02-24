@@ -21,16 +21,15 @@ Two metrics are initialised & updated in the database for each booking considere
 
   	•	passengers_refused – not enough free seats available for the booking, so the count of seats requested is added
 	
-  	•	passengers_separated – not enough free seats to sit the booking alongside one another, so the count of seats requested is
-    	added
+  	•	passengers_separated – not enough free seats to sit the booking alongside one another, so the count of seats requested is added
     
 #Assumptions
 
-  	•	The structure (table names, column names, etc.) of any future database this code will be implemented on will be the same as     				the sample database (“airline_seating.db”) provided.
+  	•	The structure (table names, column names, etc.) of any future database this code will be implemented on will be the same as the sample database (“airline_seating.db”) provided.
 		
-  	•	The format of any future .csv file this code will be implemented on will be the same as the sample file (“bookings.csv”)          			provided.
+  	•	The format of any future .csv file this code will be implemented on will be the same as the sample file (“bookings.csv”) provided.
 		
-  	•	All seats – both available and unavailable – will be present in the “seating” table and thus do not have to be inferred from      			the “rows_cols” table.
+  	•	All seats – both available and unavailable – will be present in the “seating” table and thus do not have to be inferred from the “rows_cols” table.
 
 #Code Implementation
 
@@ -48,14 +47,13 @@ At a high level, the (Python) code provided here has method(s) relating to the f
 		
 		•	Determining if feasible booking sizes can be accommodated within one row of seats
 		
-		•	Determining the best way to minimise passengers sitting by themselves / away from everyone else within their respective
-		booking (for booking sizes greater than 1) – assignment in pairs and trios is sought, here
+		•	Determining the best way to minimise passengers sitting by themselves / away from everyone else within their respective booking (for booking sizes greater than 1) – assignment in pairs and trios is sought, here
 		
 		•	Feeding relevant information back to the .db file in question
   
 Once these are declared, the code performs the following actions sequentially:-
 
-		•	Reads the filenames provided for both the .db file and .csv file (both of which are saved in the directory of interest)         through the command line, e.g. python seat_assign_1620xxxx_1620yyyy.py "airline_seating.db" "bookings.csv"
+		•	Reads the filenames provided for both the .db file and .csv file (both of which are saved in the directory of interest) through the command line, e.g. python seat_assign_1620xxxx_1620yyyy.py "airline_seating.db" "bookings.csv"
 		
 		•	Opens a connection with the database
 
