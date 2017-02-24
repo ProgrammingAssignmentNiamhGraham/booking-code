@@ -1,6 +1,9 @@
+#!/usr/bin/env python
 
 import sqlite3
 import csv
+import sys
+
 
 global conn
 global c
@@ -115,6 +118,23 @@ def write_passenger_stats_to_db(passengers_refused, passengers_separated):
     sql_text = "update metrics set passengers_refused =" + str(passengers_refused) + ", passengers_separated = " + str(passengers_separated)
     c.execute(sql_text)
     conn.commit()
+
+
+def edit_seating_plan_for_testing(num_rows, seat_arrangement):
+
+    sql_text = "delete from seating"
+    c.execute(sql_text)
+
+    split_string = list(seat_arrangement)
+
+    for i in range(num_rows):
+        for j in split_string:
+            sql_text = "insert into seating (name, row, seat) values ('', "+ str(i) + ", "+ j+")"
+            c.execute(sql_text)
+
+    sql_text = "update rows_cols set seats =  " + seat_arrangement
+    c.execute(sql_text)
+
 
 
 
@@ -379,22 +399,11 @@ def  split_booking_into_row_size_groups(booking_size, rows, num_seats_per_row, p
     return unassigned_seats
 
 
+def run_bookings_assignment(bookings_file_path):
 
-
-
-if __name__ == "__main__":
-
-    data_file_path = str(sys.argv[1]) # "airline_seating.db"
-    bookings_file_path = str(sys.argv[2]) # "bookings.csv"
-
-    # initialise metrics
+    #  initialise metrics
     passengers_refused = 0
     passengers_separated = 0
-
-    # open database connection
-    conn = sqlite3.connect(data_file_path)
-    c = conn.cursor()
-    print("Opened database successfully.")
 
     # get bookings and seating plan
     bookings_list = read_bookings(bookings_file_path)
@@ -433,8 +442,37 @@ if __name__ == "__main__":
 
     # writes metrics to database
     write_passenger_stats_to_db(passengers_refused, passengers_separated)
+    print("Num Rows: " + str(num_rows))
+    print("Num Cols: " + str(num_cols))
+    print("Passengers refused: " + str(passengers_refused))
+    print("Passengers separated: " + str(passengers_separated))
 
     print("Bookings complete.")
 
 
-#project name = seat_assign_16202504 16201265.py
+def test(bookings_file_path):
+
+    for i in range(1,40):
+        seat_string = ""
+        for j in ("A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"):
+            seat_string += j
+            edit_seating_plan_for_testing(i, seat_string)
+            run_bookings_assignment(bookings_file_path)
+
+
+
+if __name__ == "__main__":
+    # data_file_path = str(sys.argv[1])
+    # bookings_file_path = str(sys.argv[2])
+
+    data_file_path = "airline_seating.db"
+    bookings_file_path = "bookings.csv"
+
+    # open database connection
+    conn = sqlite3.connect(data_file_path)
+    c = conn.cursor()
+    print("Opened database successfully.")
+
+    # run_bookings_assignment(bookings_file_path)
+    test(bookings_file_path)
+
