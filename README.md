@@ -25,11 +25,11 @@ Two metrics are initialised & updated in the database for each booking considere
     
 #Assumptions
 
-  	•	The structure (table names, column names, etc.) of any future database this code will be implemented on will be the same as the sample database (“airline_seating.db”) provided.
+  	•	The structure (table names, column names, etc.) of any future database this code will be implemented on will be the same as the sample database (“airline_seating.db”) provided
 		
-  	•	The format of any future .csv file this code will be implemented on will be the same as the sample file (“bookings.csv”) provided.
+  	•	The format of any future .csv file this code will be implemented on will be the same as the sample file (“bookings.csv”) provided
 		
-  	•	All seats – both available and unavailable – will be present in the “seating” table and thus do not have to be inferred from the “rows_cols” table.
+  	•	All seats – both available and unavailable – will be present in the “seating” table and thus do not have to be inferred from the “rows_cols” table
 
 #Code Implementation
 
