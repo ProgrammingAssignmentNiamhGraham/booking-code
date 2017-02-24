@@ -41,31 +41,31 @@ At a high level, the (Python) code provided here has method(s) relating to the f
 		
   	•	Obtaining the plane seating configuration from the .db file in question
 		
-		•	Importing any existing bookings and establishing a row/seat framework
+	•	Importing any existing bookings and establishing a row/seat framework
 		
-		•	Determining if the booking size is feasible (i.e., too large, given the available seating)
+	•	Determining if the booking size is feasible (i.e., too large, given the available seating)
 		
-		•	Determining if feasible booking sizes can be accommodated within one row of seats
+	•	Determining if feasible booking sizes can be accommodated within one row of seats
 		
-		•	Determining the best way to minimise passengers sitting by themselves / away from everyone else within their respective booking (for booking sizes greater than 1) – assignment in pairs and trios is sought, here
+	•	Determining the best way to minimise passengers sitting by themselves / away from everyone else within their respective booking (for booking sizes greater than 1) – assignment in pairs and trios is sought, here
 		
-		•	Feeding relevant information back to the .db file in question
+	•	Feeding relevant information back to the .db file in question
   
 Once these are declared, the code performs the following actions sequentially:-
 
-		•	Reads the filenames provided for both the .db file and .csv file (both of which are saved in the directory of interest) through the command line, e.g. python seat_assign_1620xxxx_1620yyyy.py "airline_seating.db" "bookings.csv"
+	•	Reads the filenames provided for both the .db file and .csv file (both of which are saved in the directory of 	interest) through the command line, e.g. python seat_assign_1620xxxx_1620yyyy.py "airline_seating.db" "bookings.csv"
 		
-		•	Opens a connection with the database
+	•	Opens a connection with the database
 
-		•	Reads in the bookings of interest
+	•	Reads in the bookings of interest
 
-		•	Obtains the seating plan 
+	•	Obtains the seating plan 
 
-		•	Populates pre-existing bookings
+	•	Populates pre-existing bookings
 
-		•	Assigns seating for new bookings, records in the database
+	•	Assigns seating for new bookings, records in the database
 
-		•	Updates the two passenger metrics in the database
+	•	Updates the two passenger metrics in the database
 
 #Testing
 
